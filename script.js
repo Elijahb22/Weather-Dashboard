@@ -9,7 +9,7 @@ var getData = function (cityName) {
     }).then(weather => {
         //use the icon var so we call the data in a blocked scope
         let iconLink = "http://openweathermap.org/img/wn/" + weather.weather[0].icon + ".png";
-        //var to set a new date f
+        //var to set a new date 
         var d = new Date();
         var date = d.getDate() + "/" + (d.getMonth()+1) +  "/" +  d.getFullYear();
         
