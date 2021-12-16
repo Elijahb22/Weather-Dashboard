@@ -17,5 +17,24 @@ var getData = function (cityName) {
         var citySearch = document.createElement("button");
         citySearch.innerText = weather.name;
         citySearch.classList.add("btn", "btn-secondary", "previousCity");
-    })
-} 
+        //created a function to display the citys name, temp, windspeed, humidty
+        $("#city").text(weather.name + " (" + date + ")");
+        $("#temp").text(weather.main.temp + "℉");
+        $("#wind").text(weather.wind.speed + " MPH");
+        $("#humidity").text(weather.main.humidity + "%");
+        $("#weatherIcon").attr("src", iconLink);
+        $(".searchHistory").append(citySearch);
+        
+        let weatherObj = {
+            "lat": weather.coord.lat,
+            "lon": weather.coord.lon
+        }
+        // generate the 5 day forcast
+        generateFiveDayForecast(weatherObj);
+
+        // error log if typed in a city that does not exist
+    }).catch((err) => {
+        console.log(err);
+    });
+}; 
+
