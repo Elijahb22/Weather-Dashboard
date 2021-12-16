@@ -17,7 +17,7 @@ var getData = function (cityName) {
         var citySearch = document.createElement("button");
         citySearch.innerText = weather.name;
         citySearch.classList.add("btn", "btn-secondary", "previousCity");
-        //created a function to display the citys name, temp, windspeed, humidty
+        //created a function that calls the citys name, temp, windspeed, humidty
         $("#city").text(weather.name + " (" + date + ")");
         $("#temp").text(weather.main.temp + "℉");
         $("#wind").text(weather.wind.speed + " MPH");
@@ -37,4 +37,11 @@ var getData = function (cityName) {
         console.log(err);
     });
 }; 
+
+$(".submit").on('click', function(){
+    let userData = $("#userCity").val();
+    if(userData){
+        getData(userData);
+    }
+});
 
